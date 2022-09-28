@@ -1,5 +1,10 @@
 const cadastro = require('./cadastro_produtos')
 
+
+beforeEach(() => {
+    cadastro.init();
+});
+
 test("Valida Lista", function(){
     let listaProdutos_original = [
         {id:1, nome:"Produto 1", preco:10},
@@ -18,8 +23,8 @@ test("Valida tipo de dado na inserção", function(){
 
 test("Valida Deletar", function(){
     // Vou validar pelo tamanho da listagem, vou partir de um valor x e terminar com -1
-    cadastro.deletar(4);
-    expect(cadastro.listar().length).toStrictEqual(3);
+    cadastro.deletar(2);
+    expect(cadastro.listar().length).toStrictEqual(2);
 });
 
 // cenario de insucesso
