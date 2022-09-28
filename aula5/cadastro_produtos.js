@@ -1,8 +1,6 @@
 // Produto -> id, nome, preco
 // {id:1, nome:"Produto1", preco:10}
 
-const { type } = require("os")
-
 let listaProdutos = [
     {id:1, nome:"Produto 1", preco:10},
     {id:2, nome:"Produto 2", preco:20},
@@ -33,7 +31,8 @@ function buscarPorId(id) {
             return produto
         }
     }
-    throw new Error({"id":1,"message":"ID nao encontrado"});
+    throw 'erro'
+    //throw Error({"id":1,"message":"ID nao encontrado"});
 }
 
 function atualizar(id, produtoAlterado) {
@@ -47,15 +46,15 @@ function atualizar(id, produtoAlterado) {
             }
         }
     }
-    throw new Error({"id":1,"message":"ID nao encontrado"});
 }
 
 function deletar(id) {
     for(let i in listaProdutos) {
         if(listaProdutos[i].id == id) {
-            listaProdutos.splice(i, 1);
-        }    throw new Error({"id":1,"message":"ID nao encontrado"});
-    }    
+             return listaProdutos.splice(i, 1);
+        } 
+       }   throw Error({"id":1,"message":"ID nao encontrado"});
+       
 }
 
 module.exports = {
