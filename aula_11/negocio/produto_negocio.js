@@ -1,7 +1,7 @@
 const produtoPersistence = require('.././persistencia/produto_persistencia')
 
 function validaCampos(produto) {
-	if (typeof produto.nome === 'string'){
+	if (typeof produto.nome == 'string'){
 		if ( typeof produto.preco == 'number'){
 			return produto
 		}
@@ -15,7 +15,15 @@ function validaCampos(produto) {
 }
 
 async function inserir(produto) {
-	if (produto && produto.nome && produto.preco){
+	if (produto && validaCampos(produto) && produto.nome && produto.preco){
+		await produtoPersistence.inserir(produto)
+	}else{
+		throw {id:400, mensagem: 'Erro'}
+	}	
+}
+
+async function buscar(produto) {
+	if (produto && validaCampos(produto) && produto.nome && produto.preco){
 		await produtoPersistence.inserir(produto)
 	}else{
 		throw {id:400, mensagem: 'Erro'}
